@@ -1,0 +1,11 @@
+
+language: java
+deploy:
+  provider: releases
+  file: build/libs/xlr-apigee-test-plugin-1.0.0.jar
+  skip_cleanup: true
+  on:
+    all_branches: true
+    tags: true
+repo: ltutar/xlr-apigee-test-plugin
+
