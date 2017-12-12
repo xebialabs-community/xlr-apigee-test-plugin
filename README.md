@@ -42,6 +42,7 @@ It is difficult to keep a track of the revisions that are deployed to different 
 2. Click on `Add Server` of `Apigee:Server`
 3. Fill in the values and click on `Save` and `Test`. 
    - If an HTTP Proxy is needed, please create one of type `Remote Script: HTTP proxy` from `Settings` -> `Shared configuration`
+   - See the Note below
 
 ### Choose Task
 
