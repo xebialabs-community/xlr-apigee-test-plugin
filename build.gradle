@@ -1,0 +1,36 @@
+plugins {
+  id "com.github.hierynomus.license" version "0.14.0"
+  id "com.xebialabs.xl.docker" version "1.1.0"
+  id 'com.github.hierynomus.jython' version "0.6.0"
+}
+
+
+apply plugin: "com.github.hierynomus.jython"
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+version = '1.0.0'
+
+dependencies {
+    jython ":requests:2.13.0"
+    jython ":onetimepass:1.0.1"
+}
+
+xlDocker {
+  compileImage = 'xebialabs/xlr_dev_compile'
+  compileVersion = 'v7.1.0.1'
+  runImage = 'xebialabs/xlr_dev_run'
+  runVersion = 'v7.1.0.1'
+  runPortMapping = '15516:5516'
+}
+
+license {
+  header rootProject.file('License.md')
+  strictCheck false
+  excludes(["**/requests/*", "**/apigee/*", "**/onetimepass/*", "**/six.py"])
+  ext.year = Calendar.getInstance().get(Calendar.YEAR)
+  ext.name = 'XEBIALABS'
+}
+
