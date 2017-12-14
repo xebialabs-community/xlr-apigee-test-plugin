@@ -40,8 +40,9 @@ class ApigeeClient(object):
         self.proxy_dict = None
         if apigeeCI['httpProxy']:
             httpProxyAddress = apigeeCI['httpProxy'].getProperty('address')
+            idx = httpProxyAddress.index(':')
             httpProxyPort = apigeeCI['httpProxy'].getProperty('port')
-            self.proxy_dict = {httpProxyAddress + ":" + str(httpProxyPort)}
+            self.proxy_dict = {httpProxyAddress[0:idx]: httpProxyAddress + ":" + str(httpProxyPort)}
             print("http proxy: %s \n" % (self.proxy_dict))
 
     @staticmethod
@@ -113,8 +114,7 @@ class ApigeeClient(object):
     def build_url(self, contextRoot):
         url = self.build_org_url() + contextRoot
         authorization_headers = self.build_authorization_header()
-        print(url)
-        print("\n")
+        print("url: " + url + "\n")
         headers = authorization_headers
         if self.mfa:
             print("Multi factor authentication is on \n")
