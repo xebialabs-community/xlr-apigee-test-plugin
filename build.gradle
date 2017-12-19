@@ -43,3 +43,5 @@ scmVersion {
 }
 
 project.version = scmVersion.version
+
+project.tasks.release.dependsOn(project.tasks.build)
