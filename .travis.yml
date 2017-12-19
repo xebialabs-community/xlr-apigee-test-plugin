@@ -6,5 +6,5 @@ deploy:
   file_glob: true
   file: build/libs/xlr-apigee-test-plugin-*.jar
   on:
+    tags: true
     repo: xebialabs-community/xlr-apigee-test-plugin
-repo: xebialabs-community/xlr-apigee-test-plugin
