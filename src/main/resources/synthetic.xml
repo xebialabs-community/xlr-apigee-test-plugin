@@ -33,6 +33,7 @@
     <type type="apigee.CompareTextWithDescriptionField" extends="xlrelease.PythonScript">
         <property name="apigeeServer" category="input" label="Apigee Server" referenced-type="apigee.Server" kind="ci" description="The Apigee server" />
         <property name="apiProxyName" category="input" description="The api proxy name. For example: helloworld-v1" />
+        <property name="apiType" category="input" default="apiproxy" description="The type of the API. Valid values are: apiproxy or sharedflow" />
         <property name="textField" category="input" description="The text field to compare with the description field of an api proxy deployed to an environment" />
 
         <property name="descriptionField" category="output" />

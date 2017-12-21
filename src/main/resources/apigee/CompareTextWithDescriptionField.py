@@ -12,4 +12,4 @@ from apigee.ApigeeClient import ApigeeClient
 
 apigeeClient = ApigeeClient.create_apigeeClient(apigeeServer)
 
-descriptionField = apigeeClient.compare_text_field_with_description_field(apiProxyName, apigeeServer['environmentName'], textField)
+descriptionField = apigeeClient.compare_text_field_with_description_field(apiProxyName, apigeeServer['environmentName'], apiType, textField)

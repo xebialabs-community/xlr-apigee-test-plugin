@@ -49,24 +49,36 @@ class ApigeeClient(object):
     def create_apigeeClient(apigeeCI):
         return ApigeeClient(apigeeCI)
 
-    def get_revision_number_of_apiproxy_deployed_to_environment(self, apiProxyName, environmentName):
-        resp = self.build_url('/environments/' + environmentName + '/apis/' + apiProxyName + '/deployments')
+    def get_revision_number_of_apiproxy_deployed_to_environment(self, apiProxyName, apiType, environmentName):
+        if (apiType == "apiproxy"):
+            resp = self.build_url('/environments/' + environmentName + '/apis/' + apiProxyName + '/deployments')
+        elif (apiType == "sharedflow"):
+            resp = self.build_url('/environments/' + environmentName + '/sharedflows/' + apiProxyName + '/deployments')
+        else:
+            print "Api type %s is not valid. It should be apiproxy or sharedflow \n" % (apiType)
+            sys.exit(1)
         jsonData = json.loads(resp.text)
         revisionNumber = jsonData['revision'][0]['name']
-        print("Api proxy %s revision number %s is deployed to environment %s of Apigee organization %s \n" % (apiProxyName, revisionNumber, environmentName, self.organizationName))
+        print("%s %s revision number %s is deployed to environment %s of Apigee organization %s \n" % (apiType, apiProxyName, revisionNumber, environmentName, self.organizationName))
         return revisionNumber
 
-    def get_description_field_of_apiproxy_revision_number(self, apiProxyName, revisionNumber):
-        resp = self.build_url('/apis/' + apiProxyName + '/revisions/' + revisionNumber)
+    def get_description_field_of_apiproxy_revision_number(self, apiProxyName, apiType, revisionNumber):
+        if (apiType == "apiproxy"):
+            resp = self.build_url('/apis/' + apiProxyName + '/revisions/' + revisionNumber)
+        elif (apiType == "sharedflow"):
+            resp = self.build_url('/sharedflows/' + apiProxyName + '/revisions/' + revisionNumber)
+        else:
+            print "Api type %s is not valid. It should be apiproxy or sharedflow \n" % (apiType)
+            sys.exit(1)
         jsonData = json.loads(resp.text)
         descriptionContent = jsonData['description']
         print("Api proxy %s revision number %s has description field content %s \n" % (apiProxyName, revisionNumber, descriptionContent))
         return descriptionContent
 
-    def compare_text_field_with_description_field(self, apiProxyName, environmentName, textField):
-        revisionNumber = self.get_revision_number_of_apiproxy_deployed_to_environment(apiProxyName, environmentName)
+    def compare_text_field_with_description_field(self, apiProxyName, environmentName, apiType, textField):
+        revisionNumber = self.get_revision_number_of_apiproxy_deployed_to_environment(apiProxyName, apiType, environmentName)
         print("revisionNumber: " + revisionNumber + "\n")
-        descriptionField = self.get_description_field_of_apiproxy_revision_number(apiProxyName, revisionNumber)
+        descriptionField = self.get_description_field_of_apiproxy_revision_number(apiProxyName, apiType, revisionNumber)
         print("descriptionField: " + descriptionField + "\n")
         if (textField == descriptionField):
             print("textField %s is equal to description field %s \n" % (textField, descriptionField))
