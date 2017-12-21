@@ -72,7 +72,7 @@ class ApigeeClient(object):
             sys.exit(1)
         jsonData = json.loads(resp.text)
         descriptionContent = jsonData['description']
-        print("Api proxy %s revision number %s has description field content %s \n" % (apiProxyName, revisionNumber, descriptionContent))
+        print("%s %s revision number %s has description field content %s \n" % (apiType, apiProxyName, revisionNumber, descriptionContent))
         return descriptionContent
 
     def compare_text_field_with_description_field(self, apiProxyName, environmentName, apiType, textField):
