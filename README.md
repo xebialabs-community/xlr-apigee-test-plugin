@@ -22,6 +22,9 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 This XL Release plugin can compare a text string with the description field of an API Proxy that is deployed to an Apigee environment. 
 It is difficult to keep a track of the revisions that are deployed to different Apigee organizations. This is because of the fact that each Apigee organization repository comes up with its own revision numbers. The API Proxy helloworld can be revision 11 on Apigee organization ltutar-trial and be revision 2 on Apigee organization ltutar-eval. In order to overcome this problem, we inject our git tag version i.e. 1.2.3 to the description field of API Proxy Metadata before deploying to an Apigee environment. After deployment of the API Proxy, we can use this XLR plugin to compare the value of our git tag version with the content of the description field.
 
+Remark: This XLR plugin does not deploy an Apigee API Proxy or an Apigee shared flow to an Apigee environment. You can use the [XL Deploy Apigee plugin](https://github.com/xebialabs-community/xld-apigee-plugin) to deploy an Apigee application to an Apigee environment. This XLR plugin can be used as a smoke test after a deployment e.g. did I really deploy the Apigee API Proxy or Apigee shared flow with a predefined description field to the Apigee environment?
+
+
 ![Screenshot of Apigee Metadata helloworld](images/metadata-description.jpg)
 
 
