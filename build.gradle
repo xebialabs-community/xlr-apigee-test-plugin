@@ -24,7 +24,7 @@ xlDocker {
 license {
   header rootProject.file('License.md')
   strictCheck false
-  excludes(["**/requests/*", "**/apigee/*", "**/onetimepass/*", "**/six.py"])
+  excludes(["**/requests/*", "**/apigee/*", "**/onetimepass/*", "**/*"])
   ext.year = Calendar.getInstance().get(Calendar.YEAR)
   ext.name = 'XEBIALABS'
 }
