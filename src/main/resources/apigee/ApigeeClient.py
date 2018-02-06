@@ -58,8 +58,14 @@ class ApigeeClient(object):
             print "Api type %s is not valid. It should be apiproxy or sharedflow \n" % (apiType)
             sys.exit(1)
         jsonData = json.loads(resp.text)
-        revisionNumber = jsonData['revision'][0]['name']
-        print("%s %s revision number %s is deployed to environment %s of Apigee organization %s \n" % (apiType, apiProxyName, revisionNumber, environmentName, self.organizationName))
+        lengthOfNames = len(jsonData['revision'])
+        if (lengthOfNames > 1):
+            print("There are multiple revisions of this %s %s deployed to environment %s \n" % (apiType, apiProxyName, environmentName))
+            revisionNumber = jsonData['revision'][lengthOfNames -1]['name']
+            print("%s %s revision number %s is the highest revision deployed to environment %s of Apigee organization %s \n" % (apiType, apiProxyName, revisionNumber, environmentName, self.organizationName))
+        else:
+            revisionNumber = jsonData['revision'][0]['name']
+            print("%s %s revision number %s is deployed to environment %s of Apigee organization %s \n" % (apiType, apiProxyName, revisionNumber, environmentName, self.organizationName)) 
         return revisionNumber
 
     def get_description_field_of_apiproxy_revision_number(self, apiProxyName, apiType, revisionNumber):
