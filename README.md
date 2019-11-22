@@ -63,14 +63,18 @@ click on `retry` again.
 
 ### Screenshots
 
-#### Screen shot of shared configuration
+#### Screenshot of shared configuration
 ![Screenshot of Shared configuration Apigee Server](images/apigee-server.jpg)
 
-#### Screen shot of Apigee task
+#### Screenshot of Apigee task
 ![Screenshot of XLR apigee task](images/xlr-apigee-task.jpg)
 
-#### Screen shot of equal content between text and description field
+#### Screenshot of equal content between text and description field
 ![Screenshot of release with equal content](images/textfield_equal_descriptionfield.jpg)
 
-#### Screen shot of unequal content between text and description field
+#### Screenshot of unequal content between text and description field
 ![Screenshot of release with unequal content](images/textfield_unequal_descriptionfield.jpg)
+
+
+#### Screenshot of an example Remote Script: HTTP proxy
+![Screenshot of proxy example](images/proxy.png)
