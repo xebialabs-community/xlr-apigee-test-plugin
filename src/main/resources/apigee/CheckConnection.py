@@ -17,4 +17,10 @@ apigeeClient = ApigeeClient.create_apigeeClient(apigeeServer)
 
 response = apigeeClient.get_environment_details()
 
-print(response.json())
+try:
+    print response.json()
+    print("\n")
+except ValueError:
+    print("No JSON returned. \n")
+    print(response.content)
+    print("\n")
