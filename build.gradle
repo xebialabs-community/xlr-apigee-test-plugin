@@ -4,13 +4,15 @@ plugins {
   id "java"
   id "com.github.hierynomus.license" version "0.14.0"
   id "com.xebialabs.xl.docker" version "1.1.0"
-  id 'com.github.hierynomus.jython' version "0.6.0"
-  id 'pl.allegro.tech.build.axion-release' version '1.8.1'
+  id 'com.github.hierynomus.jython' version "0.11.0"
+  id 'pl.allegro.tech.build.axion-release' version '1.10.2'
 }
 
 dependencies {
-    jython ":requests:2.13.0"
+    jython ":requests:2.22.0"
     jython ":onetimepass:1.0.1"
+    jython ":six:1.13.0"
+    jython ":chardet:3.0.4"
 }
 
 xlDocker {
