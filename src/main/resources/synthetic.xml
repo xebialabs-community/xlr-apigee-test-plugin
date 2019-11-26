@@ -23,20 +23,21 @@
         <property name="mfa" kind="boolean" default="False" description="Multi factor authentication is on" />
         <property name="secretKey" password="true" required="false" description="The OTP secret key for Apigee. Required when MFA is on" />
         <property name="scriptLocation" hidden="true" default="apigee/CheckConnection.py"/>
-	</type>
+    </type>
 
-	<type type="apigee.Task" description="tutti frutti" extends="xlrelease.PythonScript" virtual="true">
-		<property name="iconLocation" default="apigee/apigee-logo.png" hidden="true"/>
-		<property name="apigeeServer" category="input" label="Server" referenced-type="apigee.Server" kind="ci" />
-	</type>  	
+    <type type="apigee.Task" extends="xlrelease.PythonScript" virtual="true">
+        <property name="apigeeServer" category="input" label="Apigee Server" referenced-type="apigee.Server" kind="ci" required="true" description="Apigee Server." />
+    </type>     
 
     <type type="apigee.CompareTextWithDescriptionField" extends="xlrelease.PythonScript">
+        <property name="taskColor" hidden="true" default="#e67e22" />
+        <property name="iconLocation" hidden="true" default="apigee/apigee.svg"/>
         <property name="apigeeServer" category="input" label="Apigee Server" referenced-type="apigee.Server" kind="ci" description="The Apigee server" />
         <property name="apiProxyName" category="input" description="The api proxy name. For example: helloworld-v1" />
         <property name="apiType" category="input" default="apiproxy" description="The type of the API. Valid values are: apiproxy or sharedflow" />
         <property name="textField" category="input" description="The text field to compare with the description field of an api proxy deployed to an environment" />
-
         <property name="descriptionField" category="output" />
-	</type>
+    </type>
 
 </synthetic>
+
